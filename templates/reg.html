@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ic.PNG') }}" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="/js/alert/css/alertify.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/js/alert/css/alertify.css') }}">
+    <!-- <link rel="stylesheet" href="/js/alert/css/alertify.min.css">
+
+    <script src="/js/alert/alertify.js"></script> -->
+    <script src="{{ url_for('static', filename='/js/alert/alertify.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/axios.min.js') }}"></script>
+    <!-- <script src="/js/alert/alertify.min.js"></script> -->
+    <title>Register WC</title>
+    <style>
+        span{
+            font-size: larger;
+            margin-right: 10px;
+            
+        }
+        .okbtn{
+        display: inline-block;
+            margin-top: 10px;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+                will-change: box-shadow,transform;
+                background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+                box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+                padding: 0 32px;
+                border-radius: 6px;
+                color: #fff;
+                height: 30px;
+                font-size: 20px;
+                text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+                transition: box-shadow 0.15s ease,transform 0.15s ease;
+
+            } 
+            .okbtn:hover {
+                    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #3c4fe0;
+                    transform: translateY(-2px);
+                }
+                .okbtn:active{
+                    box-shadow: inset 0px 3px 7px #3c4fe0;
+                    transform: translateY(2px);
+                }
+    </style>
+</head>
+<body>
+    <span>first name:</span><input id="fname" type="text" ><br>
+    <span>last name:</span><input id="lname" type="text" ><br>
+    <button onclick="ok()" class="okbtn">OK</button>
+</body>
+<script>
+
+    function ok(){
+        //window.alert(document.getElementById("fname"))
+        fv = document.getElementById("fname").value;
+        lv = document.getElementById("lname").value;
+        if(fv != "" && lv != ""){
+            //const axios = require('axios').default;
+            axios.get(window.location.href+"/check",{params:{
+                fn : fv,
+                ln : lv
+            }})
+             .then(function (response) {
+                if (response.data == "2"){
+                    alertify.error('Names are repaeted');
+                }else{
+                    window.location.href = window.location.href.slice(0,-3)+"qrcode?fname="+fv+"&lname="+lv; 
+                }
+             })
+             .catch(function (error) {
+                   console.log(error);
+             })
+             .then(function () {
+    // always executed
+            });  
+
+            //console.log(rt);
+            }
+            else{ alertify.error('Fildes are empty'); }    
+
+            
+        }
+        
+         //window.history.replaceState("", '', '/qrcode?fname='+document.getElementById("fname").value+"&lname="+document.getElementById("lname").value);  
+    
+    document.getElementById("lname").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        ok()
+    }
+});
+
+</script>
+</html>
