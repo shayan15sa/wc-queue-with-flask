@@ -1,0 +1,102 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    text-align: center;
+}
+.wrapper {
+    padding: 40px;
+    border-radius: 10px;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}   
+.wrapper > * {
+    margin-top: 5px;
+}
+.button {
+    background-color: #372df6;
+    border: none;
+    color: white;
+    padding: 9px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    outline: none;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.button:hover {
+    background-color: #4b43f4;
+}
+.image-wrapper {
+    width: 290px;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    margin: 10px;
+}
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.blue-highlight {
+    color: #ffffff;
+    background-color: #fb9648;
+    padding: 2px 4px;
+    display: inline-block;
+    border-radius: 30px;
+    font-size: 12px;
+}
+input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 13px;
+    color: rgb(53, 53, 53);
+}
+
+input::placeholder {
+    color: rgb(151, 151, 151);
+}
+
+label {
+    font-size: 12px;
+    margin: 10px 0;
+    color: rgb(77, 76, 76);
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 5px 10px;
+    height: 20px;
+}
+.input-wrapper:hover {
+    border: 1px solid rgba(2, 23, 255, 0.485)
+
+}

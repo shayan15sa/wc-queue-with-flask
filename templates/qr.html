@@ -2,50 +2,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='ic.PNG') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR-PAGE</title>
-    <style>
-        p{
-            font-size: xx-large;
-        }
-        button{
-            font-size: xx-large;
-            
-            display: inline-block;
-                outline: 0;
-                border: 0;
-                cursor: pointer;
-                transition: box-shadow 0.15s ease,transform 0.15s ease;
-                will-change: box-shadow,transform;
-                background: #97f5ff;
-                box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-                height: 48px;
-                padding: 0 32px;
-                font-size: 18px;
-                border-radius: 6px;
-                color: #36395a;
-                transition: box-shadow 0.15s ease,transform 0.15s ease;
-
-                
-                
-        }
-        button:hover {
-                    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-                    transform: translateY(-2px);
-                }
-                button:active{
-                    box-shadow: inset 0px 3px 7px #d6d6e7;
-                    transform: translateY(2px);
-                }
-    </style>
 </head>
 <body>
-    <p>you can take a screenshot or just download it</p><br>
-    <br>
-    <p>You are number {{ id }} in queue</p>
-    <img id="i" src="{{ i }}" alt="qr code">
-    <button onclick="down()">download</button>
+    <div class="wrapper">
+        <h2>You can take a screenshot <br> or just download it !</h2>
+        <span style="display: block;">You are number <span class="blue-highlight">{{ id }}</span> in queue</span>
+        <div class="image-wrapper">
+            <img id="i" src="{{ i }}" alt="qr code">
+        </div>
+        <button onclick="down()" class="button">download</button>
+    </div>
 </body>
 <script>
     function down(){
@@ -54,7 +24,6 @@
         a.href = im.getAttribute("src");
         a.download = "qr.png";
         a.click();
-        //window.alert(im.getAttribute("src"));
     }
 </script>
 </html>
