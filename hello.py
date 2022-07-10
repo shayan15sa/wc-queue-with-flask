@@ -33,7 +33,7 @@ def reg():
 def check():
     fn = request.args.get("fn")
     ln = request.args.get("ln")
-    if User.query.filter_by(fname = fn).all() != [] and User.query.filter_by(lname = ln).all() !=[]:
+    if User.query.filter_by(fname = fn).all() == [] or User.query.filter_by(lname = ln).all() ==[]:
         return "2"
     else:
         return "1"
