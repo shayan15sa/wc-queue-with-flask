@@ -43,7 +43,7 @@
                 ln : lv
             }})
              .then(function (response) {
-                if (response.data == "2"){
+                if (response.data == "1"){
                     alertify.error('Names are repaeted');
                 }else{
                     window.location.href = window.location.href.slice(0,-3)+"qrcode?fname="+fv+"&lname="+lv; 
